@@ -1,8 +1,8 @@
 <app-header
   [navbarBrandRouterLink]="['/dashboard']"
   [fixed]="true"
-  [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
-  [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
+  [navbarBrandFull]="{src: 'assets/citta-mobi-logo.png', width: 89, height: 25, alt: 'CoreUI Logo'}"
+  [navbarBrandMinimized]="{src: 'assets/citta-mobi-ico.png', width: 30, height: 30, alt: 'CoreUI Logo'}"
   [sidebarToggler]="'lg'"
   [asideMenuToggler]="'lg'">
   <ul class="nav navbar-nav d-md-down-none">
@@ -17,15 +17,16 @@
     </li>
   </ul>
   <ul class="nav navbar-nav ml-auto">
-    <li class="nav-item d-md-down-none">
+    <!-- TODO:example -->
+    <!-- <li class="nav-item d-md-down-none">
       <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
     </li>
     <li class="nav-item d-md-down-none">
       <a class="nav-link" href="#"><i class="icon-list"></i></a>
-    </li>
-    <li class="nav-item d-md-down-none">
+    </li> -->
+    <!-- <li class="nav-item d-md-down-none">
       <a class="nav-link" href="#"><i class="icon-location-pin"></i></a>
-    </li>
+    </li> -->
     <li class="nav-item dropdown" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
         <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"/>
@@ -81,9 +82,11 @@
     <!--</ol>-->
     <div class="container-fluid">
       <router-outlet></router-outlet>
-    </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.container-fluid -->
   </main>
-  <app-aside [fixed]="true" [display]="false" [ngClass]="'test'">
+  <!-- TODO:example -->
+  <!-- <app-aside [fixed]="true" [display]="false" [ngClass]="'test'">
     <tabset>
       <tab>
         <ng-template tabHeading><i class="icon-list"></i></ng-template>
@@ -333,7 +336,7 @@
         </div>
       </tab>
     </tabset>
-  </app-aside>
+  </app-aside> -->
 </div>
 <app-footer>
   <span><a href="https://coreui.io">CoreUI</a> &copy; 2018 creativeLabs.</span>
