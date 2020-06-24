@@ -1,11 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { BusRepository } from '../../repositories/bus/bus_repository';
+import { BusCategoryRepository } from '../../repositories/bus_categories/bus_category_repository';
+import { BusLineRepository } from '../../repositories/bus_line/bus_line_repository';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
+
+  public totalBus: number = 0;
+  public totalCurrentPassengerAmount: number = 0;
+  public totalArticulado: number = 0;
+  public totalLotacao: number = 0;
+
+  constructor(
+    private busRepository: BusRepository,
+    private busCategoryRepository: BusCategoryRepository,
+    private busLineRepository: BusLineRepository, ) {
+  }
 
   radioModel: string = 'Month';
 
@@ -241,7 +255,7 @@ export class DashboardComponent implements OnInit {
       mode: 'index',
       position: 'nearest',
       callbacks: {
-        labelColor: function(tooltipItem, chart) {
+        labelColor: function (tooltipItem, chart) {
           return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor };
         }
       }
@@ -254,7 +268,7 @@ export class DashboardComponent implements OnInit {
           drawOnChartArea: false,
         },
         ticks: {
-          callback: function(value: any) {
+          callback: function (value: any) {
             return value.charAt(0);
           }
         }
@@ -384,5 +398,43 @@ export class DashboardComponent implements OnInit {
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
+
+    this.populateData();
   }
+
+  populateData(): void {
+    //TODO:temp
+    var idLotacao = '438385c7-2ca5-41cf-8cfc-7201830e7e9f';
+    var idArticulado = '5326a387-5e13-4e8f-95b7-3c218d7bcaf3';
+
+    this.busRepository.getAll().subscribe(data => {
+      this.totalBus = data.length;
+
+      data.forEach(item => {
+        this.totalCurrentPassengerAmount += item.currentPassengerAmount
+
+        if (item.bus_type_id == idArticulado)
+          this.totalArticulado++;
+
+        if (item.bus_type_id == idLotacao)
+          this.totalLotacao++;
+      });
+
+      console.log('data', data);
+    }, (error) => console.error('error', error));
+
+    this.busCategoryRepository.getAll().subscribe(data => {
+      console.log('data category', data);
+    }, (error) => console.error('error category', error));
+
+    this.busLineRepository.getAll().subscribe(data => {
+      console.log('data line', data);
+    }, (error) => console.error('error line', error));
+  }
+}
+
+class BusItem {
+  chassi: String;
+  maxCapacity: number;
+  currentAmount: number;
 }
