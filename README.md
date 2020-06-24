@@ -37,10 +37,10 @@ Update guide - see: [https://update.angular.io](https://update.angular.io)
 
 ``` bash
 # clone the repo
-$ git clone https://github.com/coreui/coreui-free-angular-admin-template.git my-project
+$ git clone https://github.com/pesquisaedesenvolvimento/hackathon-citta-mobi.git
 
 # go into app's directory
-$ cd my-project
+$ cd hackathon-citta-mobi
 
 # install app's dependencies
 $ npm install
