@@ -43,6 +43,7 @@ import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { BusRepository } from './repositories/bus/bus_repository';
 import { BusCategoryRepository } from './repositories/bus_categories/bus_category_repository';
+import { BusLineRepository } from './repositories/bus_line/bus_line_repository';
 
 @NgModule({
   imports: [
@@ -74,6 +75,7 @@ import { BusCategoryRepository } from './repositories/bus_categories/bus_categor
   },
     BusRepository,
     BusCategoryRepository,
+    BusLineRepository,
   ],
   bootstrap: [AppComponent]
 })
