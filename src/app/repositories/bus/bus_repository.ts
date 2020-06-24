@@ -9,6 +9,6 @@ export class BusRepository {
     constructor(private http: HttpClient) { }
 
     public getAll(): Observable<Bus[]> {
-        return this.http.get<Bus[]>(`${_baseUrl}bus`);
+        return this.http.get<Bus[]>(`${_baseUrl}/bus`);
     }
 }
