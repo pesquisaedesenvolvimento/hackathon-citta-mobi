@@ -1,6 +1,6 @@
 # Hackathon CittaMobi
 
-[Preview Dashboard Live](https://github.com/pesquisaedesenvolvimento/hackathon-citta-mobi/blob/master/src/assets/data/Insomnia_2020-06-23.json)
+[Preview Dashboard Live](https://hackathon-citta-mobi.web.app/)
 
 An API was created to simulate data capture.
 
