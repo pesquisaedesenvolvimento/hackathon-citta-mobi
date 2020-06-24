@@ -1,6 +1,6 @@
 # Hackathon CittaMobi
 
-[Preview Dashboard Live](https://hackathon-citta-mobi.web.app/)
+[>>>>>> Preview Dashboard Live <<<<<<](https://hackathon-citta-mobi.web.app/)
 
 An API was created to simulate data capture.
 
