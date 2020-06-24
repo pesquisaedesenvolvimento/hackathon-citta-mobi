@@ -11,4 +11,8 @@ export class BusCategoryRepository {
     public getAll(): Observable<BusCategorie[]> {
         return this.http.get<BusCategorie[]>(`${_baseUrl}/bustypes`);
     }
+
+    public getItem(id: String): Observable<BusCategorie> {
+        return this.http.get<BusCategorie>(`${_baseUrl}/bustype/${id}`);
+    }
 }

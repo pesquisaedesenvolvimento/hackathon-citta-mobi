@@ -14,11 +14,13 @@ export class DashboardComponent implements OnInit {
   public totalCurrentPassengerAmount: number = 0;
   public totalArticulado: number = 0;
   public totalLotacao: number = 0;
+  public busItems: BusItem[] = [];
+  public hiddenBusItems = true;
 
   constructor(
     private busRepository: BusRepository,
     private busCategoryRepository: BusCategoryRepository,
-    private busLineRepository: BusLineRepository, ) {
+    private busLineRepository: BusLineRepository,) {
   }
 
   radioModel: string = 'Month';
@@ -413,6 +415,16 @@ export class DashboardComponent implements OnInit {
       data.forEach(item => {
         this.totalCurrentPassengerAmount += item.currentPassengerAmount
 
+        this.busCategoryRepository.getItem(item.bus_type_id).subscribe(data => {
+          var newItem = new BusItem();
+          newItem.colors = "#8a05be";
+          newItem.chassi = item.chassis;
+          newItem.currentAmount = item.currentPassengerAmount;
+          newItem.maxCapacity = data.maxCapacity;
+
+          this.busItems.push(newItem);
+        });
+
         if (item.bus_type_id == idArticulado)
           this.totalArticulado++;
 
@@ -420,6 +432,7 @@ export class DashboardComponent implements OnInit {
           this.totalLotacao++;
       });
 
+      this.hiddenBusItems = false;
       console.log('data', data);
     }, (error) => console.error('error', error));
 
@@ -437,4 +450,5 @@ class BusItem {
   chassi: String;
   maxCapacity: number;
   currentAmount: number;
+  colors: String;
 }
